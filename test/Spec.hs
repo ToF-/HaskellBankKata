@@ -1,7 +1,30 @@
 import Test.Hspec
+import Bank
+
+userStory01= ["Given a client makes a deposit of 1000.00 on 01/04/2014"
+             ,"And a withdrawal of 100.00 on 02/04/2014"
+             ,"And a deposit of 500.00 on 10/04/2014"
+             ,"When she prints her bank statement"
+             ,"Then she would see"
+             ,""
+             ,"DATE | AMOUNT | BALANCE"
+             ,"10/04/2014 | 500.00 | 1400.00"
+             ,"02/04/2014 | -100.00 | 900.00"
+             ,"01/04/2014 | 1000.00 | 1000.00"]
 
 main :: IO ()
 main = hspec $ do
-    describe "dummy" $ do
-        it "should show that a test harness is present" $ do
-            2+2  `shouldBe` 4
+    describe "acceptance test" $ do
+        it (unlines userStory01) $ do
+            let bank = newBank
+            let commands = ["D 1000.00 01/04/2014"
+                           ,"W 100.00 02/04/2014"
+                           ,"D 500.00 10/04/2014"
+                           ,"P"]
+            let result = process newBank commands
+            result  `shouldBe` unlines ["DATE | AMOUNT | BALANCE"
+                                       ,"10/04/2014 | 500.00 | 1400.00"
+                                       ,"02/04/2014 | -100.00 | 900.00"
+                                       ,"01/04/2014 | 1000.00 | 1000.00"]
+
+
