@@ -1,2 +1,7 @@
+import Test.Hspec
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = hspec $ do
+    describe "dummy" $ do
+        it "should show that a test harness is present" $ do
+            2+2  `shouldBe` 4
