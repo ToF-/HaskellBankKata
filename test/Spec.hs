@@ -16,12 +16,11 @@ main :: IO ()
 main = hspec $ do
     describe "acceptance test" $ do
         it (unlines userStory01) $ do
-            let bank = newBank
             let commands = ["D 1000.00 01/04/2014"
                            ,"W 100.00 02/04/2014"
                            ,"D 500.00 10/04/2014"
                            ,"P"]
-            let result = process newBank commands
+            let result = process commands
             result  `shouldBe` unlines ["DATE | AMOUNT | BALANCE"
                                        ,"10/04/2014 | 500.00 | 1400.00"
                                        ,"02/04/2014 | -100.00 | 900.00"
