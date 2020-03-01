@@ -47,3 +47,4 @@ instance Show Date
 
 statement :: [Operation] -> [StatementLine]
 statement [Deposit d a] = [SL d a a]
+statement [Deposit d a, Deposit e b] = [SL e b (a+b), SL d a a]
