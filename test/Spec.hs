@@ -33,3 +33,9 @@ main = hspec $ do
             show st `shouldBe` "10/04/2014 | 500.00 | 1400.00"
             let st = SL (Date 02 04 2014) (-100.00) 900.00
             show st `shouldBe` "02/04/2014 | -100.00 | 900.00"
+
+
+    describe "statement" $ do
+        it "should be made from operations" $ do
+            let ops = [Deposit (Date 01 04 2014) 1000.0]
+            statement ops `shouldBe` [SL (Date 01 04 2014) 1000.00 1000.00]

@@ -14,8 +14,15 @@ process _ = unlines ["DATE | AMOUNT | BALANCE"
 
 
 data Date = Date Int Int Int
+    deriving Eq
+
 type Amount = Float
+
 data StatementLine = SL Date Amount Amount
+    deriving Eq
+
+data Operation = Deposit Date Amount
+    deriving (Eq,Show)
     
 instance Show StatementLine
     where
@@ -36,3 +43,7 @@ instance Show Date
         where
         showInt2 n | n < 10 = '0':show n
                    | otherwise = show n
+
+
+statement :: [Operation] -> [StatementLine]
+statement _ = [SL (Date 01 04 2014) 1000.00 1000.00]
