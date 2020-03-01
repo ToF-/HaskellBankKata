@@ -2,6 +2,7 @@ module Bank
     where
 
 import Data.List (intercalate)
+
 type Result = String
 type Command = String
 
@@ -18,7 +19,7 @@ data Statement = Statement Date Amount Amount
     
 instance Show Statement
     where
-    show (Statement d a b) = showDate d ++ " | " ++ (showAmount a) ++ " | " ++ (showAmount b)
+    show (Statement d a b) = intercalate " | " [showDate d, showAmount a, showAmount b]
 
 
 showAmount n = intPart ++ "." ++ decPart
