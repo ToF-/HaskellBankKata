@@ -1,6 +1,7 @@
 module Bank
     where
 
+import Data.List (intercalate)
 type Result = String
 type Command = String
 
