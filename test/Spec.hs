@@ -27,7 +27,7 @@ main = hspec $ do
                                        ,"01/04/2014 | 1000.00 | 1000.00"]
 
 
-    describe "statement" $ do
+    describe "statement line" $ do
         it "should be showable" $ do
             let st = SL (10,04,2014) 500.00 1400.00
             show st `shouldBe` "10/04/2014 | 500.00 | 1400.00"
