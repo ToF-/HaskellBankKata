@@ -17,8 +17,7 @@ data Statement = Statement Date Amount Amount
     
 instance Show Statement
     where
-    show (Statement (10,04,2014) 500.00 1400.00) = showDate (10,04,2014) ++ " | " ++ (showAmount 500) ++ " | " ++ (showAmount 1400)
-    show (Statement (02,04,2014) (-100.00) 900.00) = "02/04/2014 | -100.00 | 900.00"
+    show (Statement d a b) = showDate d ++ " | " ++ (showAmount a) ++ " | " ++ (showAmount b)
 
 
 showAmount n = intPart ++ "." ++ decPart
