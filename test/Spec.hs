@@ -47,3 +47,10 @@ main = hspec $ do
                       ,Deposit (Date 04 04 2014) 500.0]
             statement ops `shouldBe` [SL (Date 04 04 2014) 500.00 1500.00
                                      ,SL (Date 01 04 2014) 1000.00 1000.00]
+
+            let ops = [Deposit (Date 01 04 2014) 1000.0
+                      ,Deposit (Date 02 04 2014)  700.0
+                      ,Deposit (Date 04 04 2014)  500.0]
+            statement ops `shouldBe` [SL (Date 04 04 2014)  500.00 2200.00
+                                     ,SL (Date 02 04 2014)  700.00 1700.00
+                                     ,SL (Date 01 04 2014) 1000.00 1000.00]
