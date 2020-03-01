@@ -46,7 +46,10 @@ instance Show Date
 
 
 statement :: [Operation] -> [StatementLine]
-statement [] = []
-statement [Deposit d a] = SL d a (0+a) : []
-statement [Deposit d a, Deposit e b] = SL e b (a+b) : statement [Deposit d a] 
-statement [Deposit d a, Deposit e b, Deposit f c] = SL f c (a+b+c) : statement [Deposit d a, Deposit e b]
+statement = reverseStatement . reverse
+    where
+    reverseStatement :: [Operation] -> [StatementLine]
+    reverseStatement [] = []
+    reverseStatement [Deposit d a] = SL d a (0+a) : []
+    reverseStatement [Deposit e b, Deposit d a] = SL e b (a+b) : reverseStatement [Deposit d a] 
+    reverseStatement [Deposit f c, Deposit e b, Deposit d a] = SL f c (a+b+c) : reverseStatement [Deposit e b, Deposit d a]
