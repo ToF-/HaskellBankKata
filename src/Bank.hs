@@ -15,11 +15,11 @@ process _ = unlines ["DATE | AMOUNT | BALANCE"
 
 type Date = (Int,Int,Int)
 type Amount = Float
-data Statement = Statement Date Amount Amount
+data StatementLine = SL Date Amount Amount
     
-instance Show Statement
+instance Show StatementLine
     where
-    show (Statement d a b) = intercalate " | " [showDate d, showAmount a, showAmount b]
+    show (SL d a b) = intercalate " | " [showDate d, showAmount a, showAmount b]
 
 
 showAmount n = intPart ++ "." ++ decPart
