@@ -31,3 +31,5 @@ main = hspec $ do
         it "should be showable" $ do
             let st = Statement (10,04,2014) 500.00 1400.00
             show st `shouldBe` "10/04/2014 | 500.00 | 1400.00"
+            let st = Statement (02,04,2014) (-100.00) 900.00
+            show st `shouldBe` "02/04/2014 | -100.00 | 900.00"
