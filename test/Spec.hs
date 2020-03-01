@@ -39,3 +39,5 @@ main = hspec $ do
         it "should be made from operations" $ do
             let ops = [Deposit (Date 01 04 2014) 1000.0]
             statement ops `shouldBe` [SL (Date 01 04 2014) 1000.00 1000.00]
+            let ops = [Deposit (Date 04 04 2014) 500.0]
+            statement ops `shouldBe` [SL (Date 04 04 2014) 500.00 500.00]
